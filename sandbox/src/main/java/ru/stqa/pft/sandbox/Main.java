@@ -1,3 +1,5 @@
+package ru.stqa.pft.sandbox;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -27,6 +29,6 @@ public class Main {
 //        int z = x + y;
         int age = 30;
         String text = "My age is";
-        System.out.println(text + ' ' + age);
+        System.out.println(text + ' ' + age + " fuck");
     }
 }
