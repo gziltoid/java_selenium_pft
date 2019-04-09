@@ -17,4 +17,8 @@ sandbox/.idea/
 sandbox/build/
 sandbox/gradle/
 sandbox/out
+addressbook-web-tests/build
+addressbook-web-tests/out
+addressbook-web-tests/gradle/
 .idea/
+
