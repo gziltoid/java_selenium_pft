@@ -27,9 +27,9 @@ public class ApplicationManager {
   }
 
   public void init() throws MalformedURLException {
-    if (browser == BrowserType.FIREFOX) {
+    if (browser.equals(BrowserType.FIREFOX)) {
       driver = new FirefoxDriver();
-    } else if (browser == BrowserType.CHROME) {
+    } else if (browser.equals(BrowserType.CHROME)) {
       driver = new ChromeDriver();
     }
     driver.get("http://localhost/addressbook/group.php");
