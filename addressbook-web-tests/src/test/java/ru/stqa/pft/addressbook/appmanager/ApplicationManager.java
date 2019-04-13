@@ -1,8 +1,16 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -12,9 +20,18 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
+  private String browser;
 
-  public void init() {
-    driver = new FirefoxDriver();
+  public ApplicationManager(String browser) {
+    this.browser = browser;
+  }
+
+  public void init() throws MalformedURLException {
+    if (browser == BrowserType.FIREFOX) {
+      driver = new FirefoxDriver();
+    } else if (browser == BrowserType.CHROME) {
+      driver = new ChromeDriver();
+    }
     driver.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
