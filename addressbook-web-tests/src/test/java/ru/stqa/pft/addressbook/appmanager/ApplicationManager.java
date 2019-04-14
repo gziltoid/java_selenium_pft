@@ -19,6 +19,7 @@ public class ApplicationManager {
 
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
+  private ContactHelper contactHelper;
   private GroupHelper groupHelper;
   private String browser;
 
@@ -35,8 +36,9 @@ public class ApplicationManager {
     driver.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
+    contactHelper = new ContactHelper(driver);
     sessionHelper = new SessionHelper(driver);
-    driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     sessionHelper.login("admin", "secret");
   }
 
@@ -50,5 +52,9 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
