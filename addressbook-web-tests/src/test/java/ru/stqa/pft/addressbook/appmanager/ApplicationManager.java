@@ -33,7 +33,7 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.CHROME)) {
       driver = new ChromeDriver();
     }
-    driver.get("http://localhost/addressbook/group.php");
+    driver.get("http://localhost/addressbook");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
     contactHelper = new ContactHelper(driver);
