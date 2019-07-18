@@ -34,10 +34,12 @@ public class ApplicationManager {
       driver = new ChromeDriver();
     }
     driver.get("http://localhost/addressbook");
+
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
     contactHelper = new ContactHelper(driver);
     sessionHelper = new SessionHelper(driver);
+
     driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
     sessionHelper.login("admin", "secret");
   }
