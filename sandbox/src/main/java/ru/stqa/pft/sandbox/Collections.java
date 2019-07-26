@@ -7,17 +7,22 @@ import java.util.List;
 public class Collections {
 
   public static void main(String[] args) {
-    String[] langs = {"Java", "C#", "Python", "PHP"};
+//    String[] langs = new String[4];
+
+//    String[] langs = {"Java", "C#", "Python", "PHP"};
 
 //    List<String> languages = new ArrayList<String>();
-//    List<String> languages = Arrays.asList("Java", "C#", "Python", "PHP");
 //    languages.add("Java");
 //    languages.add("C#");
 //    languages.add("Python");
 
+//    // List<String> languages = Arrays.asList("Java", "C#", "Python", "PHP");
+
 //    for (String lang : languages) {
 //      System.out.println(lang);
 //    }
+
+
 
 //    for (int i = 0; i < languages.size(); i++) {
 //      System.out.println(languages.get(i));
