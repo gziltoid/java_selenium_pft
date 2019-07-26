@@ -98,7 +98,8 @@ public class ContactHelper extends HelperBase {
     List<WebElement> elements = driver.findElements(By.name("entry"));
     for (WebElement element : elements) {
       String firstname = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
-      ContactData contact = new ContactData(firstname, null, null);
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, firstname, null, null);
       contacts.add(contact);
     }
     return contacts;
