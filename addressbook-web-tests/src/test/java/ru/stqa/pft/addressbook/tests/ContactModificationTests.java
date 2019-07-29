@@ -12,10 +12,10 @@ public class ContactModificationTests extends TestBase {
 
   @Test(enabled = false)
   public void testContactModification() {
-    app.getNavigationHelper().goToHomePage();
+    app.goTo().goToHomePage();
     if (!app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().goToGroupPage();
-      app.getGroupHelper().createGroup(new GroupData("test3", null, null));
+      app.goTo().groupPage();
+      app.group().create(new GroupData("test3", null, null));
       app.getContactHelper().createContact(new ContactData("test1", "test2", "test3"));
     }
 
