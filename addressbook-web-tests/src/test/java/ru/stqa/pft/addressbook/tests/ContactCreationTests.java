@@ -12,7 +12,7 @@ public class ContactCreationTests extends TestBase {
     app.goTo().goToHomePage();
     int before = app.getContactHelper().getContactCount();
     app.goTo().groupPage();
-    app.group().create(new GroupData("test3", null, null));
+    app.group().create(new GroupData().withName("test3"));
     app.getContactHelper().createContact(new ContactData("test1", "test2", "test3"));
     app.goTo().goToHomePage();
     int after = app.getContactHelper().getContactCount();
