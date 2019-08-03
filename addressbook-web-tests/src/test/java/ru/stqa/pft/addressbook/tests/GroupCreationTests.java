@@ -8,9 +8,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
-  //  private String baseUrl;
-  //  private boolean acceptNextAlert = true;
-  //  private StringBuffer verificationErrors = new StringBuffer();
 
   @Test
   public void testGroupCreation() {
