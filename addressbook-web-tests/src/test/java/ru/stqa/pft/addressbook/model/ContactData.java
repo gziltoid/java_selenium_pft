@@ -8,20 +8,6 @@ public class ContactData {
   private String group;
   private int id;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(firstName, that.firstName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(firstName, id);
-  }
-
   public ContactData(int id, String firstname, String lastName, String group) {
     this.id = id;
     this.firstName = firstname;
@@ -55,4 +41,19 @@ public class ContactData {
   public void setId(int id) {
     this.id = id;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(firstName, that.firstName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName, id);
+  }
+
 }

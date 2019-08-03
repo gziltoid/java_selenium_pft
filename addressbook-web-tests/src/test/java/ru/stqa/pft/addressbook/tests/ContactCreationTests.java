@@ -29,6 +29,6 @@ public class ContactCreationTests extends TestBase {
 
     contact.setId(after.stream().max(Comparator.comparingInt(ContactData::getId)).get().getId());
     before.add(contact);
-    Assert.assertEquals(new HashSet<ContactData>(before), new HashSet<ContactData>(after));
+    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 }
