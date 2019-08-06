@@ -154,9 +154,8 @@ public class ContactHelper extends HelperBase {
       int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
       String firstName = cells.get(1).getText();
       String lastName = cells.get(2).getText();
-      String[] phones = cells.get(5).getText().split("\n");
-      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName)
-              .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]);
+      String allPhones = cells.get(5).getText();
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName).withAllPhones(allPhones);
       contacts.add(contact);
     }
     return contacts;
