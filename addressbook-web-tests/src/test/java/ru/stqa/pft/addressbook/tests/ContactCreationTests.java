@@ -20,15 +20,16 @@ public class ContactCreationTests extends TestBase {
     app.goTo().groupPage();
     app.group().create(new GroupData().withName("test3"));
 
-    ContactData contact = new ContactData("test1", "test2", "test3");
+    ContactData contact = new ContactData().withFirstName("test1").withLastName("test2").withGroup("test3");
     app.contact().createContact(contact);
     app.goTo().homePage();
     Assert.assertEquals(app.contact().count(), before.size() + 1);
 
     List<ContactData> after = app.contact().list();
 
-    contact.setId(after.stream().max(Comparator.comparingInt(ContactData::getId)).get().getId());
-    before.add(contact);
+//    contact.setId(after.stream().max(Comparator.comparingInt(ContactData::getId)).get().getId());
+
+    before.add(contact.withId(after.stream().max(Comparator.comparingInt(ContactData::getId)).get().getId()));
     Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
   }
 }
