@@ -51,6 +51,25 @@ public class ContactHelper extends HelperBase {
     click(By.cssSelector("img[title='Edit']"));
   }
 
+  public ContactData infoFromEditForm(ContactData contact) {
+    initContactModificationById(contact.getId());
+    String firstName = driver.findElement(By.name("firstname")).getAttribute("value");
+    String lastName = driver.findElement(By.name("lastname")).getAttribute("value");
+    String home = driver.findElement(By.name("home")).getAttribute("value");
+    String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
+    String work = driver.findElement(By.name("work")).getAttribute("value");
+    driver.navigate().back();
+    return new ContactData().withId(contact.getId()).withFirstName(firstName).withLastName(lastName)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+  }
+
+  public void initContactModificationById(int id) {
+    WebElement checkbox = driver.findElement(By.cssSelector(String.format("input[value='%s']", id)));
+    WebElement row = checkbox.findElement(By.xpath("./../.."));
+    List<WebElement> cells = row.findElements(By.tagName("td"));
+    cells.get(7).findElement(By.tagName("a")).click();
+  }
+
   public void submitContactModification() {
     click(By.name("update"));
   }
@@ -101,23 +120,25 @@ public class ContactHelper extends HelperBase {
 
     for (WebElement element : elements) {
       String firstName = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
+      String lastName = element.findElement(By.cssSelector("tr > td:nth-child(2)")).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstName, null, null);
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
       contacts.add(contact);
     }
     return contacts;
   }
 
-//  public Set<ContactData> all() {
-//    Set<ContactData> contacts = new HashSet<ContactData>();
-//    List<WebElement> elements = driver.findElements(By.name("entry"));
-//    for (WebElement element : elements) {
-//      String firstname = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
-//      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-//      ContactData contact = new ContactData(id, firstname, null, null);
-//      contacts.add(contact);
-//    }
-//    return contacts;
-//  }
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
+    List<WebElement> elements = driver.findElements(By.name("entry"));
 
+    for (WebElement element : elements) {
+      String firstName = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
+      String lastName = element.findElement(By.cssSelector("tr > td:nth-child(2)")).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
+      contacts.add(contact);
+    }
+    return contacts;
+  }
 }
