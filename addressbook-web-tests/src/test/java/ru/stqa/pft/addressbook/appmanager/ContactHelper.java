@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("lastname"), contactData.getLastName());
 
-    if(creation) {
+    if (creation) {
       new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -128,14 +128,29 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
+  //  public Set<ContactData> all() {
+//    Set<ContactData> contacts = new HashSet<ContactData>();
+//    List<WebElement> elements = driver.findElements(By.name("entry"));
+//
+//    for (WebElement element : elements) {
+//      String firstName = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
+//      String lastName = element.findElement(By.cssSelector("tr > td:nth-child(2)")).getText();
+//      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+//      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
+//      contacts.add(contact);
+//    }
+//    return contacts;
+//  }
+
   public Set<ContactData> all() {
     Set<ContactData> contacts = new HashSet<ContactData>();
-    List<WebElement> elements = driver.findElements(By.name("entry"));
+    List<WebElement> rows = driver.findElements(By.name("entry"));
 
-    for (WebElement element : elements) {
-      String firstName = element.findElement(By.cssSelector("tr > td:nth-child(3)")).getText();
-      String lastName = element.findElement(By.cssSelector("tr > td:nth-child(2)")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+    for (WebElement row : rows) {
+      List<WebElement> cells = row.findElements(By.tagName("td"));
+      int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+      String firstName = cells.get(1).getText();
+      String lastName = cells.get(2).getText();
       ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
       contacts.add(contact);
     }

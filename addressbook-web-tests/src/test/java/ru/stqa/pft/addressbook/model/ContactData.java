@@ -3,23 +3,23 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id = 0;
+  private int id;
   private String firstName;
   private String lastName;
-  private String group = null;
+  private String group;
   private String home;
   private String mobile;
   private String work;
 
-  public String getHome() {
+  public String getHomePhone() {
     return home;
   }
 
-  public String getMobile() {
+  public String getMobilePhone() {
     return mobile;
   }
 
-  public String getWork() {
+  public String getWorkPhone() {
     return work;
   }
 
