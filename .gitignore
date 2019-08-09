@@ -22,3 +22,4 @@ addressbook-web-tests/out
 addressbook-web-tests/gradle/
 .idea/
 
+addressbook-web-tests/src/test/resources/groups.csv
