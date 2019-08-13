@@ -28,17 +28,17 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void fillContactForm(ContactData contactData, boolean creation) {
-    type(By.name("firstname"), contactData.getFirstName());
-    type(By.name("lastname"), contactData.getLastName());
-    type(By.name("home"), contactData.getHomePhone());
-    type(By.name("mobile"), contactData.getMobilePhone());
-    type(By.name("work"), contactData.getWorkPhone());
-    attach(By.name("photo"), contactData.getPhoto());
+  public void fillContactForm(ContactData contact, boolean creation) {
+    type(By.name("firstname"), contact.getFirstName());
+    type(By.name("lastname"), contact.getLastName());
+    type(By.name("home"), contact.getHomePhone());
+    type(By.name("mobile"), contact.getMobilePhone());
+    type(By.name("work"), contact.getWorkPhone());
+    attach(By.name("photo"), contact.getPhoto());
 
     if (creation) {
-      if (contactData.getGroup() != null) {
-        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contact.getGroup() != null) {
+        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroup());
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
