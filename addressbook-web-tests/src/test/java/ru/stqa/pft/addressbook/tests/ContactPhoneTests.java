@@ -13,17 +13,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneTests extends TestBase {
 
-//  @BeforeMethod
-//  public void ensurePreconditions() {
-////    app.goTo().homePage();
-////    if (!app.contact().isThereAContact()) {
-//      app.goTo().groupPage();
-//      app.group().create(new GroupData().withName("test3"));
-//      app.goTo().homePage();
-//      app.contact().createContact(new ContactData().withFirstName("test1").withLastName("test2").withGroup("test3")
-//              .withHomePhone("111").withMobilePhone("222").withWorkPhone("333"));
-////    }
-//  }
+  @BeforeMethod
+  public void ensurePreconditions() {
+    app.goTo().homePage();
+    if (!app.contact().isThereAContact()) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test3"));
+      app.goTo().homePage();
+      app.contact().createContact(new ContactData().withFirstName("test1").withLastName("test2").withGroup("test3")
+              .withHomePhone("111").withMobilePhone("222").withWorkPhone("333"));
+    }
+  }
 
   @Test
   public void testContactPhones() {

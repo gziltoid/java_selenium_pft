@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertTrue;
 
@@ -50,7 +51,11 @@ public class ContactHelper extends HelperBase {
   }
 
   public void returnToHomePage() {
-    click(By.linkText("home page"));
+//    click(By.linkText("home page"));
+    if(isElementPresent(By.id("maintable"))) {
+      return;
+    }
+    click(By.linkText("home"));
   }
 
   public void initContactModification() {
@@ -89,6 +94,17 @@ public class ContactHelper extends HelperBase {
     fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
+  }
+
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContacts();
+    returnToHomePage();
+  }
+
+  private void selectContactById(int id) {
+//    driver.findElements(By.name("selected[]")).g.click();
+    driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   public void selectContact(int index) {
