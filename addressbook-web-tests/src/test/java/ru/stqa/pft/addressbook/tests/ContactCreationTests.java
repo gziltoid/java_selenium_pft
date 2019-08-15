@@ -24,7 +24,7 @@ public class ContactCreationTests extends TestBase {
     File photo = new File("src/test/resources/stru.png");
     ContactData contact = new ContactData().withFirstName("test1").withLastName("test2").withPhoto(photo);
     app.contact().createContact(contact);
-    app.goTo().homePage();
+//    app.goTo().homePage();
     Assert.assertEquals(app.contact().count(), before.size() + 1);
 
     List<ContactData> after = app.contact().list();
