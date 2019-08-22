@@ -21,9 +21,14 @@ public class ContactDeletionTests extends TestBase {
   public void ensurePreconditions() {
     app.goTo().homePage();
     if (!app.contact().isThereAContact()) {
-      app.goTo().groupPage();
-      app.group().create(new GroupData().withName("test3").withFooter("test").withHeader("test"));
-      app.contact().createContact(new ContactData().withFirstName("test1").withLastName("test2").withGroup("test3"));
+      Groups groups = app.db().groups();
+      if (groups.size() == 0) {
+        app.goTo().groupPage();
+        app.group().create(new GroupData().withName("test3").withFooter("test").withHeader("test"));
+      }
+
+      app.contact().createContact(new ContactData().withFirstName("test1")
+              .withLastName("test2").inGroup(groups.iterator().next()));
     }
   }
 
