@@ -12,15 +12,13 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
 .DS_Store
 sandbox/.idea/
 sandbox/build/
-sandbox/gradle/
 sandbox/out
 addressbook-web-tests/build
 addressbook-web-tests/out
-addressbook-web-tests/gradle/
 .idea/
-
 addressbook-web-tests/src/test/resources/groups.csv
 *.log
