@@ -31,11 +31,19 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.CHROME)) {
       driver = new ChromeDriver();
     }
-    driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
+    driver.manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
     driver.get(properties.getProperty("web.baseUrl"));
   }
 
   public void stop() {
     driver.quit();
+  }
+
+  public HttpSession newSession() {
+    return new HttpSession(this);
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
   }
 }

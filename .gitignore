@@ -22,3 +22,4 @@ addressbook-web-tests/out
 .idea/
 addressbook-web-tests/src/test/resources/groups.csv
 *.log
+*.class
